@@ -1,4 +1,4 @@
-describe("(Test suite for Request a Quote functionality)", () => {
+describe("(Test suite for Request a Quote inputs look&feel and functionality)", () => {
   beforeEach(() => {
     cy.visit("/quote.html");
     cy.location("pathname").should("eq", "/quote.html");
@@ -19,7 +19,7 @@ describe("(Test suite for Request a Quote functionality)", () => {
       .and("have.css", "background-color", "rgb(6, 163, 218)");
   });
 
-  it("Test-Case 2: Verify 'Your Name' input and its functionality", () => {
+  it.only("Test-Case 2: Verify 'Your Name' input and its functionality", () => {
     cy.get("#q_name")
       .should("be.visible")
       .and("have.class", "form-control bg-light border-0")
@@ -30,16 +30,17 @@ describe("(Test suite for Request a Quote functionality)", () => {
       .focus()
       .type("Something here")
       .should("have.value", "Something here")
-      .and("have.class", "is-valid")
+      .shouldHaveCheckmarkIcon()
       .clear()
       .type("s")
       .should("have.value", "s")
       .and("have.class", "is-invalid")
+      .shouldHaveErroredIcon()
       .clear()
       .should("have.value", "");
   });
 
-  it('Test Case 3: Verify "Your Email" input and its functionality', () => {
+  it.only('Test Case 3: Verify "Your Email" input and its functionality', () => {
     cy.get("#q_email")
       .should("be.visible")
       .and("have.class", "form-control bg-light border-0")
@@ -50,11 +51,11 @@ describe("(Test suite for Request a Quote functionality)", () => {
       .focus()
       .type("some@fake.com")
       .should("have.value", "some@fake.com")
-      .and("have.class", "is-valid")
+      .shouldHaveCheckmarkIcon()
       .clear()
       .type("s")
       .should("have.value", "s")
-      .and("have.class", "is-invalid")
+      .shouldHaveErroredIcon()
       .clear()
       .should("have.value", "");
   });
@@ -82,7 +83,7 @@ describe("(Test suite for Request a Quote functionality)", () => {
       });
   });
 
-  it('Test Case 5: Verify "Message" textarea and its functionality', () => {
+  it.only('Test Case 5: Verify "Message" textarea and its functionality', () => {
     cy.get("#q_message")
       .should("be.visible")
       .and("have.class", "form-control bg-light border-0")
@@ -92,11 +93,12 @@ describe("(Test suite for Request a Quote functionality)", () => {
       .focus()
       .type("four")
       .should("have.value", "four")
-      .and("have.class", "is-invalid")
+      .shouldHaveErroredIcon()
       .clear()
       .type("longer than 4 characters")
       .should("have.value", "longer than 4 characters")
-      .and("have.class", "is-valid");
+      .and("have.class", "is-valid")
+      .shouldHaveCheckmarkIcon();
   });
 
   it('Test Case 6: Verify "Request A Quote" button and its functionality', () => {

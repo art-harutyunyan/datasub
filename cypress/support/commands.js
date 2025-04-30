@@ -38,3 +38,35 @@ Cypress.Commands.add(
     });
   }
 );
+
+Cypress.Commands.add(
+  "shouldHaveErroredIcon",
+  { prevSubject: true },
+  (subject) => {
+    cy.wrap(subject)
+      .should("have.class", "is-invalid")
+      .and("have.css", "background-image")
+      .then((erroredIcon) => {
+        expect(erroredIcon).to.include("data:image/svg+xml");
+        expect(erroredIcon).to.include("%23dc3545");
+        expect(erroredIcon).to.include("circle");
+      });
+    return cy.wrap(subject);
+  }
+);
+
+Cypress.Commands.add(
+  "shouldHaveCheckmarkIcon",
+  { prevSubject: true },
+  (subject) => {
+    cy.wrap(subject)
+      .should("have.class", "is-valid")
+      .and("have.css", "background-image")
+      .then((erroredIcon) => {
+        expect(erroredIcon).to.include("data:image/svg+xml");
+        expect(erroredIcon).to.include("%23198754");
+        expect(erroredIcon).to.include("path");
+      });
+    return cy.wrap(subject);
+  }
+);
