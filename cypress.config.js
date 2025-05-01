@@ -9,5 +9,6 @@ module.exports = defineConfig({
     baseUrl: "https://qatest.datasub.com/",
     viewportHeight: 1080,
     viewportWidth: 1920,
+    experimentalRunAllSpecs: true,
   },
 });

@@ -19,7 +19,7 @@ describe("(Test suite for Request a Quote inputs look&feel and functionality)", 
       .and("have.css", "background-color", "rgb(6, 163, 218)");
   });
 
-  it.only("Test-Case 2: Verify 'Your Name' input and its functionality", () => {
+  it("Test-Case 2: Verify 'Your Name' input and its functionality", () => {
     cy.get("#q_name")
       .should("be.visible")
       .and("have.class", "form-control bg-light border-0")
@@ -40,7 +40,7 @@ describe("(Test suite for Request a Quote inputs look&feel and functionality)", 
       .should("have.value", "");
   });
 
-  it.only('Test Case 3: Verify "Your Email" input and its functionality', () => {
+  it('Test Case 3: Verify "Your Email" input and its functionality', () => {
     cy.get("#q_email")
       .should("be.visible")
       .and("have.class", "form-control bg-light border-0")
@@ -83,7 +83,7 @@ describe("(Test suite for Request a Quote inputs look&feel and functionality)", 
       });
   });
 
-  it.only('Test Case 5: Verify "Message" textarea and its functionality', () => {
+  it('Test Case 5: Verify "Message" textarea and its functionality', () => {
     cy.get("#q_message")
       .should("be.visible")
       .and("have.class", "form-control bg-light border-0")
